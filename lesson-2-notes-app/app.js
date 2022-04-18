@@ -6,7 +6,7 @@ const msg = getNotes()
 
 console.log(msg)
 
-const error = chalk.bold.red;
+const error = chalk.inverse.bold.red;
 const success = chalk.bold.green;
 
 // Check valid email
