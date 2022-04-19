@@ -25,7 +25,7 @@ const dataBuffer = fs.readFileSync('1-json.json');
 const dataJSON = dataBuffer.toString()
 
 // Change the data
-let data = JSON.parse(dataJSON)
+const data = JSON.parse(dataJSON)
 data.name = "Shahnawaz Alam"
 data.age = 31
 
