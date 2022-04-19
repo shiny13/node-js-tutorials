@@ -8,6 +8,7 @@ console.log(msg)
 
 const error = chalk.inverse.bold.red;
 const success = chalk.bold.green;
+const consoleArgs = chalk.bold.blue;
 
 // Check valid email
 console.log(error(validator.isEmail('shahnawaz'))) // false
@@ -16,3 +17,8 @@ console.log(success(validator.isEmail('shahnawaz@email.com'))) // true
 console.log(error(validator.isURL('./mead.io'))) // false
 console.log(success(validator.isURL('https://mead.io'))) // true
 console.log(success('Success!'))
+
+let arg = process.argv[2]
+if (arg && arg !== '') {
+    console.log('Argument input: ' + consoleArgs(arg))
+}
