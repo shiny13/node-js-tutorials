@@ -9,7 +9,8 @@ const chalk = require('chalk');
 
 // const error = chalk.inverse.bold.red;
 // const success = chalk.bold.green;
-const consoleArgs = chalk.bold.blue;
+const greenArgs = chalk.bold.green;
+const yellowArgs = chalk.bold.yellow;
 
 // Check valid email
 // console.log(error(validator.isEmail('shahnawaz'))) // false
@@ -49,7 +50,8 @@ yargs.command({
         }
     },
     handler: function (argv) {
-        console.log(`Title: ${consoleArgs(argv.title)} \r\nBody: ${consoleArgs(argv.body)}`)
+        console.log(yellowArgs('Title: ') + greenArgs(argv.title))
+        console.log(yellowArgs('Body: ') + greenArgs(argv.body))
     }
 })
 
