@@ -36,3 +36,9 @@ Title: "List"
 #### List command usage  
 The list command reads the contents from json file: `notes.json` and parses them to a list of objects containing the `title` and `body` properties.  
 Example: `node app.js list`  
+
+#### Read command usage  
+The read command can be invoked with one mandatory string option parameters: title where it will print the title and body by reading it from the json file: `notes.json`.  
+Example: `node app.js read --title="List"`  
+Here the app is run with the remove command and one options:  
+Title: "List"  

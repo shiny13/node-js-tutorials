@@ -9,17 +9,16 @@ const yellow = chalk.bold.yellow;
 const magentaTitle = chalk.inverse.magenta;
 const magentaText = chalk.bold.magenta;
 
-const getNotes = function () {
-    return 'Your notes...'
-}
-
 const addNote = (title, body) => {
     const notes = loadNotes()
 
-    // implementing an array filter
-    const duplicateNotes = notes.filter((note) => note.title == title)
+    // an array filter that will search the whole for a match
+    // const duplicateNotes = notes.filter((note) => note.title == title)
+    
+    // Better than filter, it stops on the 1st instance of a match
+    const duplicateNote = notes.find((note) => note.title === title)
 
-    if (duplicateNotes.length == 0) {
+    if (!duplicateNote) {
         notes.push({
             title: title,
             body: body
@@ -71,9 +70,24 @@ const listNotes = () => {
     notes.forEach((note) => console.log(magentaText(`| ${note.title}: ${note.body} |`)))
 }
 
+const readNote = (title) => {
+    const notes = loadNotes()
+    if (notes.length === 0) {
+        console.log(red('The json file is empty'))
+        return
+    }
+
+    const note = notes.find((note) => note.title === title)
+    if (note) {
+        console.log(`${magentaTitle(note.title)} ${note.body}`)
+    } else {
+        console.log(red('No note found!'))
+    }
+}
+
 module.exports = { 
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
