@@ -2,15 +2,15 @@ const fs = require('fs')
 const chalk = require('chalk');
 
 const red = chalk.inverse.red;
-const blue = chalk.inverse.blue;
-const green = chalk.bold.green;
+const blue = chalk.bold.blue;
+const green = chalk.inverse.green;
 const yellow = chalk.bold.yellow;
 
 const getNotes = function () {
     return 'Your notes...'
 }
 
-const addNote = function (title, body) {
+const addNote = (title, body) => {
     const notes = loadNotes()
 
     // implementing an array filter
@@ -31,13 +31,13 @@ const addNote = function (title, body) {
     }
 }
 
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
     console.log(blue('saving to notes.json'))
 }
 
-const loadNotes = function () {
+const loadNotes = () => {
     try {
         const dataBuffer = fs.readFileSync('notes.json')
         const dataJSON = dataBuffer.toString()
@@ -47,7 +47,7 @@ const loadNotes = function () {
     }
 }
 
-const removeNote = function(title) {
+const removeNote = (title) => {
     const notes = loadNotes()
     if (notes.length === 0) {
         console.log(yellow('The json file is empty'))
