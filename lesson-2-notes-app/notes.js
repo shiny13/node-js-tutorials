@@ -49,19 +49,16 @@ const loadNotes = function () {
 
 const removeNote = function(title) {
     const notes = loadNotes()
-
-    if (notes.length == 0) {
+    if (notes.length === 0) {
         console.log(yellow('The json file is empty'))
+        return
     }
 
-    const note = notes.filter(function (e) {
-        return e.title === title
+    const newNotes = notes.filter(function (e) {
+        return e.title !== title
     })
 
-    if (note.length !== 0) {
-        const newNotes = notes.filter(function (e) {
-            return e.title !== title
-        })
+    if (notes.length > newNotes.length) {
         saveNotes(newNotes)
         console.log(green(`Removed note with title: ${title}`))
     } else {
