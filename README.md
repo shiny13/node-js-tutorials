@@ -32,3 +32,7 @@ The remove command can be invoked with one mandatory string option parameters: t
 Example: `node app.js remove --title="List"`  
 Here the app is run with the remove command and one options:  
 Title: "List"  
+
+#### List command usage  
+The list command reads the contents from json file: `notes.json` and parses them to a list of objects containing the `title` and `body` properties.  
+Example: `node app.js list`  
