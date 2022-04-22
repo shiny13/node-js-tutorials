@@ -1,10 +1,13 @@
 const fs = require('fs')
 const chalk = require('chalk');
+const { clear } = require('console');
 
 const red = chalk.inverse.red;
 const blue = chalk.bold.blue;
 const green = chalk.inverse.green;
 const yellow = chalk.bold.yellow;
+const magentaTitle = chalk.inverse.magenta;
+const magentaText = chalk.bold.magenta;
 
 const getNotes = function () {
     return 'Your notes...'
@@ -57,12 +60,20 @@ const removeNote = (title) => {
         saveNotes(newNotes)
         console.log(green(`Removed note with title: ${title}`))
     } else {
-        console.log(red(`Note with title: ${title} does not exist.`))
+        console.log(yellow(`Note with title: ${title} does not exist.`))
     }
+}
+
+const listNotes = () => {
+    const notes = loadNotes()
+
+    console.log(magentaTitle('Your Notes'))
+    notes.forEach((note) => console.log(magentaText(`| ${note.title}: ${note.body} |`)))
 }
 
 module.exports = { 
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
