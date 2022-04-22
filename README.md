@@ -1,4 +1,4 @@
-# node-js-tutorials
+# Node.s Tutorials
 This project contains exercises from Andrew Mead's Node.js tutorial:  
 [The Complete Node.js Developer Course (3rd Edition)](https://www.udemy.com/course/the-complete-nodejs-developer-course-2/)
 
@@ -21,10 +21,14 @@ Followed by one of these parameters:
 Each command may have their own option parameters as described below.
 
 #### Add command usage  
-The add command can be invoked with two mandatory string option parameters: title and body  
+The add command can be invoked with two mandatory string option parameters: title and body, where it will add a json array to the file: `notes.json`.  
 Example: `node app.js add --title="List" --body="Sweater, Pants"`  
 Here the app is run with the add command and two options:  
 Title: "List"  
 Body: "Sweater, Pants"
 
-
+#### Remove command usage  
+The remove command can be invoked with one mandatory string option parameters: title where it will locate that title and remove it from the json file: `notes.json`.  
+Example: `node app.js remove --title="List"`  
+Here the app is run with the remove command and one options:  
+Title: "List"  

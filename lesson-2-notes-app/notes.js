@@ -41,7 +41,30 @@ const loadNotes = function () {
     }
 }
 
+const removeNote = function(title) {
+    const notes = loadNotes()
+
+    if (notes.length == 0) {
+        console.log('The json file is empty')
+    }
+
+    const note = notes.filter(function (e) {
+        return e.title === title
+    })
+
+    if (note.length !== 0) {
+        const newNotes = notes.filter(function (e) {
+            return e.title !== title
+        })
+        saveNotes(newNotes)
+        console.log(`Removed note with title: ${title}`)
+    } else {
+        console.log(`Note with title: ${title} does not exist.`)
+    }
+}
+
 module.exports = { 
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
