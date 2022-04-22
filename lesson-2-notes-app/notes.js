@@ -1,8 +1,8 @@
 const fs = require('fs')
 const chalk = require('chalk');
 
-const red = chalk.bold.red;
-const blue = chalk.bold.blue;
+const red = chalk.inverse.red;
+const blue = chalk.inverse.blue;
 const green = chalk.bold.green;
 const yellow = chalk.bold.yellow;
 
