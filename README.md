@@ -17,6 +17,7 @@ Followed by one of these parameters:
 - `remove`
 - `list`
 - `read`  
+
 Each command may have their own option parameters as described below.
 
 #### Add command usage  
