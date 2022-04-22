@@ -14,9 +14,7 @@ const addNote = (title, body) => {
     const notes = loadNotes()
 
     // implementing an array filter
-    const duplicateNotes = notes.filter(function (note) {
-        return note.title == title
-    })
+    const duplicateNotes = notes.filter((note) => note.title == title)
 
     if (duplicateNotes.length == 0) {
         notes.push({
@@ -54,10 +52,7 @@ const removeNote = (title) => {
         return
     }
 
-    const newNotes = notes.filter(function (e) {
-        return e.title !== title
-    })
-
+    const newNotes = notes.filter((e) => e.title !== title)
     if (notes.length > newNotes.length) {
         saveNotes(newNotes)
         console.log(green(`Removed note with title: ${title}`))
