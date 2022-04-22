@@ -1,4 +1,10 @@
 const fs = require('fs')
+const chalk = require('chalk');
+
+const red = chalk.bold.red;
+const blue = chalk.bold.blue;
+const green = chalk.bold.green;
+const yellow = chalk.bold.yellow;
 
 const getNotes = function () {
     return 'Your notes...'
@@ -19,16 +25,16 @@ const addNote = function (title, body) {
         })
 
         saveNotes(notes)
-        console.log('New note added!')
+        console.log(green('New note added!'))
     } else {
-        console.log('Note title taken!')
+        console.log(red('Note title taken!'))
     }
 }
 
 const saveNotes = function (notes) {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
-    console.log('saving to notes.json')
+    console.log(blue('saving to notes.json'))
 }
 
 const loadNotes = function () {
@@ -45,7 +51,7 @@ const removeNote = function(title) {
     const notes = loadNotes()
 
     if (notes.length == 0) {
-        console.log('The json file is empty')
+        console.log(yellow('The json file is empty'))
     }
 
     const note = notes.filter(function (e) {
@@ -57,9 +63,9 @@ const removeNote = function(title) {
             return e.title !== title
         })
         saveNotes(newNotes)
-        console.log(`Removed note with title: ${title}`)
+        console.log(green(`Removed note with title: ${title}`))
     } else {
-        console.log(`Note with title: ${title} does not exist.`)
+        console.log(red(`Note with title: ${title} does not exist.`))
     }
 }
 
