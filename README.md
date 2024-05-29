@@ -42,3 +42,20 @@ The read command can be invoked with one mandatory string option parameters: tit
 Example: `node app.js read --title="List"`  
 Here the app is run with the remove command and one options:  
 Title: "List"  
+
+### New Lesson 2 - Notes app
+This lesson teaches you to make a console application with Node.js. 
+Here we will use a built in node.js library called `fs` to manipulate files. 
+
+To import a library the `require()` is used with the library name as parameter as follows:
+`const fs = require('fs')` 
+
+Then the variable `fs` can be used within the file to invoke methods in the library.
+`fs.writeFileSync('notes.txt', 'My name is Shahnawaz.')`
+NB: The following website has information on npm libraries: `https://www.npmjs.com/` 
+
+To import a file in the current file, the `require()` can be used as follows:
+`const utils = require('./utils.js')`
+NB: the `utils.js` must export the methods and variables to be used in the new file as follows:
+`module.exports = { name, add, multiply }`
+Here `name` is a variable and `add` and `multiply` are javascript functions.
