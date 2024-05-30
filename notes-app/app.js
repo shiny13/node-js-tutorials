@@ -1,30 +1,68 @@
-const notes = require('./notes')
-const utils = require('./utils')
 const chalk = require('chalk')
-const validator = require('validator')
+const yargs = require('yargs')
+const notes = require('./notes')
 
-console.log(utils.name)
+// Create add command
+yargs.command({
+    command: 'add',
+    describe: 'Add a new note',
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.addNote(argv.title, argv.body)
+    }
+})
 
-const sum = utils.add(4, -2)
-console.log(sum)
+// Create remove command
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a note',
+    builder: {
+        title: {
+            describe: 'Remove note with title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.removeNote(argv.title)
+    }
+})
 
-const product = utils.add(5, 3)
-console.log(product)
+// Create read command
+yargs.command({
+    command: 'read',
+    describe: 'Read a note',
+    builder: {
+        title: {
+            describe: 'Read note with title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title)
+    }
+})
 
-const msg = notes.getNotes()
-console.log(msg)
+// Create list command
+yargs.command({
+    command: 'list',
+    describe: 'List all notes',
+    handler() {
+        notes.listNotes()
+    }
+})
 
-// validate emails
-const email1 = 'shah@example.com'
-console.log('Valid email ' + email1 + ' : ' + validator.isEmail(email1))
-const email2 = 'shah@example'
-console.log('Valid email ' + email2 + ' : ' + validator.isEmail(email2))
-
-// validate URLs
-const url1 = 'https://mead.io'
-console.log('Valid url ' + url1 + ' : ' + validator.isURL(url1))
-const url2 = 'https/mead.io'
-console.log('Valid url ' + url2 + ' : ' + validator.isURL(url2))
-
-console.log(chalk.green.inverse.bold('Success!'))
-console.log(chalk.red.bold('Failure!'))
+yargs.parse()
+//console.log(yargs.argv)
